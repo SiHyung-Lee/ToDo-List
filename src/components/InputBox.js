@@ -1,21 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 
-const Outer = styled.div``;
+const Container = styled.div``;
 
 const Input = styled.input``;
 
 const Button = styled.button``;
 
-function InputBox() {
-    return (
-        <>
-            <Outer>
-                <Input />
-                <Button>Submit</Button>
-            </Outer>
-        </>
-    );
+function InputBox(props) {
+  const { addTask } = props;
+  const [title, setTitle] = useState("");
+  const handleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  return (
+    <>
+      <Container>
+        <Input value={title} onChange={handleChange} />
+        <Button onClick={addTask}>Submit</Button>
+      </Container>
+    </>
+  );
 }
 
 export default InputBox;
