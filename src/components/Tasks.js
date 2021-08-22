@@ -3,23 +3,19 @@ import styled from "styled-components";
 
 const Task = styled.div``;
 
-const Title = styled.input``;
+const Label = styled.label``;
 
 const Check = styled.input``;
 
-const Delete = styled.button``;
-
-const Modify = styled.button``;
-
 const Tasks = (props) => {
-  const { title } = props;
+  const { task } = props;
   return (
     <>
       <Task>
-        <Check type="checkbox" />
-        <Title type="text" value={title} />
-        <Modify>Modify</Modify>
-        <Delete>Delete</Delete>
+        <Label type="text">
+          <Check type="checkbox" />
+          {task}
+        </Label>
       </Task>
     </>
   );

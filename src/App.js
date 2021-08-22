@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import styled from "styled-components";
 import "./App.css";
-import Tasks from "./components/Tasks";
-import InputBox from "./components/InputBox";
+import CreateTask from "./components/CreateTask";
+
+const Header = styled.header``;
 
 const App = () => {
-  const [titles, setTitles] = useState(["aaaaaaa"]);
-
-  const addTask = () => {
-    setTitles([...titles, "aaaa"]);
-  };
-
   return (
     <div className="App">
-      {titles.map((title, idx) => (
-        <Tasks key={idx} title={title} />
-      ))}
-      <InputBox addTask={addTask} />
+      <Header>ToDo List</Header>
+      <CreateTask />
     </div>
   );
 };
