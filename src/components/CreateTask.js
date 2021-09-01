@@ -1,40 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import Tasks from "./Tasks";
 
-const Container = styled.div``;
+const Form = styled.form``;
 
 const Input = styled.input``;
 
 const Button = styled.button``;
 
-function CreateTask() {
-  const [tasks, setTasks] = useState([]);
+function CreateTask({ handleAddTask }) {
   const [value, setValue] = useState("");
+  const inputRef = useRef(null);
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const addTask = (value) => {
-    setTasks([...tasks, value]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleAddTask(value);
     setValue("");
+    inputRef.current.focus();
   };
 
   return (
     <>
-      <Container>
+      <Form onSubmit={handleSubmit}>
         <Input
           type="text"
           value={value}
           onChange={handleChange}
           placeholder="Enter a todo"
+          ref={inputRef}
         />
-        <Button onClick={() => addTask(value)}>Submit</Button>
-      </Container>
-      {tasks.map((task, idx) => (
-        <Tasks key={idx} task={task} />
-      ))}
+        <Button type="submit">Submit</Button>
+      </Form>
     </>
   );
 }
