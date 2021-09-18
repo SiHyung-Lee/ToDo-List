@@ -10,13 +10,12 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
 
   const handleAddTask = (value) => {
-    setTasks([...tasks, { text: value, isChecked: false }]);
-    console.log("add");
+    if (value !== "") {
+      setTasks([{ text: value, isChecked: false }, ...tasks]);
+    }
   };
 
   const handleCheckTask = (task, id) => {
-    console.log(task, id);
-
     setTasks(
       tasks.map((item) =>
         item.text === task.text ? { ...item, isChecked: !item.isChecked } : item

@@ -3,11 +3,15 @@ import styled from "styled-components";
 
 const Task = styled.div``;
 
-const Label = styled.label`
+const Checkbox = styled.input``;
+
+const Input = styled.input`
+  width: 50%;
+  border: none;
   text-decoration: ${(props) => (props.dataChecked ? "line-through" : "none")};
 `;
 
-const Checkbox = styled.input``;
+const Button = styled.button``;
 
 const Tasks = (props) => {
   const { tasks, handleCheckTask } = props;
@@ -21,13 +25,9 @@ const Tasks = (props) => {
             checked={task.isChecked}
             onChange={() => handleCheckTask(task, idx)}
           />
-          <Label
-            type="text"
-            htmlFor={`task${idx}`}
-            dataChecked={task.isChecked}
-          >
-            {task.text}
-          </Label>
+          <Input value={task.text} dataChecked={task.isChecked} readOnly />
+          <Button>Modify</Button>
+          <Button>Delete</Button>
         </Task>
       ))}
     </>
