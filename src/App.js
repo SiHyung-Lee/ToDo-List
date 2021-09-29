@@ -17,20 +17,17 @@ const App = () => {
 
     const handleDeleteTask = (idx) => {
         console.log(idx)
+        //setTasks(tasks.map((item, index) => console.log(idx)))
     }
 
     const handleModifyTask = () => {}
 
     const handleCheckTask = (idx) => {
-        //console.log(idx)
-        tasks.map((item) => console.log(tasks.findIndex(idx)))
-        /*setTasks(
-            tasks.map((item) =>
-                item.text === idx
-                    ? { ...item, isChecked: !item.isChecked }
-                    : item
+        setTasks(
+            tasks.map((item, index) =>
+                index === idx ? { ...item, isChecked: !item.isChecked } : item
             )
-        )*/
+        )
     }
 
     return (
