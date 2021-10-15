@@ -7,7 +7,7 @@ import './App.css'
 const Header = styled.header``
 
 const App = () => {
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState([]);
 
     const handleAddTask = (value) => {
         if (value !== '') {
@@ -16,8 +16,9 @@ const App = () => {
     }
 
     const handleDeleteTask = (idx) => {
-        console.log(idx)
-        //setTasks(tasks.map((item, index) => console.log(idx)))
+        let array = tasks;
+        console.log(array.splice(idx, 1));
+        //setTasks(array);
     }
 
     const handleModifyTask = () => {}
