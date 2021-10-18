@@ -12,6 +12,7 @@ const App = () => {
         { text: 'bbbbbbbb', isChecked: false },
         { text: 'cccccccc', isChecked: false },
         { text: 'dddddddd', isChecked: false },
+        { text: 'eeeeeeee', isChecked: false },
     ]);
 
     const handleAddTask = (value) => {
