@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFile } from '@fortawesome/free-solid-svg-icons';
 
 const Form = styled.form`
     margin-bottom: 5%;
@@ -27,6 +29,8 @@ const Button = styled.button`
     vertical-align: top;
 `;
 
+const Icon = <FontAwesomeIcon icon={faFile} />;
+
 function CreateTask({ handleAddTask }) {
     const [value, setValue] = useState('');
     const inputRef = useRef(null);
@@ -52,7 +56,7 @@ function CreateTask({ handleAddTask }) {
                     placeholder='Enter a todo'
                     ref={inputRef}
                 />
-                <Button type='submit'>Submit</Button>
+                <Button type='submit'>{Icon}</Button>
             </Form>
         </>
     );
