@@ -4,7 +4,11 @@ import CreateTask from './components/CreateTask';
 import Tasks from './components/Tasks';
 import './App.css';
 
-const Header = styled.header``;
+const Header = styled.header`
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+`;
 
 const App = () => {
     const [tasks, setTasks] = useState([

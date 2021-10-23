@@ -1,3 +1,4 @@
-/*input[type="checkbox"]:checked + label {
-  text-decoration: line-through;
-}*/
+html, body {
+  margin:0;
+  padding:0;
+}
