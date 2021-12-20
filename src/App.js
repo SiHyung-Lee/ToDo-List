@@ -17,30 +17,38 @@ const App = () => {
         { text: 'cccccccc', isChecked: false },
     ]);
 
-    const handleAddTask = (value) => {
+    const handleAddTask = value => {
         if (value !== '') {
-            setTasks([{ text: value, isChecked: false }, ...tasks]);
+            setTasks([
+                { text: value, isChecked: false, readOnly: true },
+                ...tasks,
+            ]);
         }
     };
 
-    const handleDeleteTask = (idx) => {
-        let array = tasks;
-        array.splice(idx, 1);
-        setTasks([...array]);
+    const handleDeleteTask = idx => {
+        const result = tasks.filter((task, index) => index !== idx);
+        setTasks(result);
     };
 
-    const handleModifyTask = () => {};
+    const handleModifyTask = idx => {
+        const thisTaskInput = document.querySelector(
+            `#task${idx} input[type=text]`,
+        );
+        thisTaskInput.readOnly = false;
+        thisTaskInput.focus();
+    };
 
-    const handleCheckTask = (idx) => {
+    const handleCheckTask = idx => {
         setTasks(
-            tasks.map((item, index) =>
-                index === idx ? { ...item, isChecked: !item.isChecked } : item
-            )
+            tasks.map((task, index) =>
+                index === idx ? { ...task, isChecked: !task.isChecked } : task,
+            ),
         );
     };
 
     return (
-        <div className='App'>
+        <div className="App">
             <Header>ToDo List</Header>
             <CreateTask handleAddTask={handleAddTask} />
             <Tasks
