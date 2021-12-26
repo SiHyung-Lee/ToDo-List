@@ -76,12 +76,14 @@ const Tasks = props => {
                         />
                         <Input
                             type="text"
+                            className="task"
                             value={task.text}
                             dataChecked={task.isChecked}
                             readOnly
                         />
                         <Input
                             type="text"
+                            className="task__modify"
                             value={value}
                             onChange={handleChange}
                         />

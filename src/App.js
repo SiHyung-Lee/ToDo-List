@@ -32,11 +32,11 @@ const App = () => {
     };
 
     const handleModifyTask = idx => {
-        const thisTaskInput = document.querySelector(
-            `#task${idx} input[type=text]`,
-        );
-        thisTaskInput.readOnly = false;
-        thisTaskInput.focus();
+        const thisTask = document.querySelector(`#task${idx}`);
+        const thisTaskTitle = thisTask.querySelector('.task').value;
+
+        thisTask.querySelector('.task__modify').value = thisTaskTitle;
+        thisTask.querySelector('.task__modify').focus();
     };
 
     const handleModifyConfirmTask = (idx, value) => {
