@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faCloud } from '@fortawesome/free-solid-svg-icons';
 
 const Task = styled.div`
     display: flex;
@@ -45,12 +45,25 @@ const Button = styled.button`
     font-size: 9px;
 `;
 
-const IconMpdify = <FontAwesomeIcon icon={faPen} />;
-const IconDelete = <FontAwesomeIcon icon={faTrash} />;
+const IconPen = <FontAwesomeIcon icon={faPen} />;
+const IconTrash = <FontAwesomeIcon icon={faTrash} />;
+const IconCloud = <FontAwesomeIcon icon={faCloud} />;
 
 const Tasks = props => {
-    const { tasks, handleCheckTask, handleModifyTask, handleDeleteTask } =
-        props;
+    const [value, setValue] = useState('');
+
+    const handleChange = event => {
+        setValue(event.target.value);
+    };
+
+    const {
+        tasks,
+        handleCheckTask,
+        handleModifyTask,
+        handleDeleteTask,
+        handleModifyConfirmTask,
+    } = props;
+
     return (
         <>
             {tasks.map((task, idx) => (
@@ -67,13 +80,23 @@ const Tasks = props => {
                             dataChecked={task.isChecked}
                             readOnly
                         />
+                        <Input
+                            type="text"
+                            value={value}
+                            onChange={handleChange}
+                        />
                     </Inputs>
                     <Buttons>
+                        <Button
+                            onClick={() => handleModifyConfirmTask(idx, value)}
+                        >
+                            {IconCloud}
+                        </Button>
                         <Button onClick={() => handleModifyTask(idx)}>
-                            {IconMpdify}
+                            {IconPen}
                         </Button>
                         <Button onClick={() => handleDeleteTask(idx)}>
-                            {IconDelete}
+                            {IconTrash}
                         </Button>
                     </Buttons>
                 </Task>

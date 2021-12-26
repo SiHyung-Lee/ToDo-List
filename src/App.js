@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import CreateTask from './components/CreateTask';
 import Tasks from './components/Tasks';
@@ -39,6 +39,16 @@ const App = () => {
         thisTaskInput.focus();
     };
 
+    const handleModifyConfirmTask = (idx, value) => {
+        setTasks(
+            tasks.map((task, index) =>
+                index === idx
+                    ? { text: value, isChecked: task.isChecked }
+                    : task,
+            ),
+        );
+    };
+
     const handleCheckTask = idx => {
         setTasks(
             tasks.map((task, index) =>
@@ -56,6 +66,7 @@ const App = () => {
                 handleCheckTask={handleCheckTask}
                 handleDeleteTask={handleDeleteTask}
                 handleModifyTask={handleModifyTask}
+                handleModifyConfirmTask={handleModifyConfirmTask}
             />
         </div>
     );
