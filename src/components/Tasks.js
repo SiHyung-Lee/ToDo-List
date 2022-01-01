@@ -3,10 +3,23 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
 
+const TaskList = styled.section`
+    padding: 0 20px;
+`;
+
+const Sorting = styled.h2`
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #003b73;
+`;
+
 const Task = styled.div`
     display: flex;
+    padding: 5px 0;
     justify-content: space-between;
-    padding: 5px 20px;
     border-bottom: 1px solid #f4f4f4;
 `;
 
@@ -50,8 +63,8 @@ const Button = styled.button`
     font-size: 9px;
     &.button__modify {
         display: none;
-        background-color: rgb(30, 135, 240);
-        border-color: rgb(30, 135, 240);
+        background-color: #60a3d9;
+        border-color: #60a3d9;
     }
 `;
 
@@ -76,51 +89,108 @@ const Tasks = props => {
 
     return (
         <>
-            {tasks.map((task, idx) => (
-                <Task key={idx} id={`task${idx}`}>
-                    <Inputs>
-                        <Checkbox
-                            type="checkbox"
-                            checked={task.isChecked}
-                            onChange={() => handleCheckTask(idx)}
-                        />
-                        <Input
-                            type="text"
-                            className="task"
-                            value={task.text}
-                            dataChecked={task.isChecked}
-                            readOnly
-                        />
-                        <Input
-                            type="text"
-                            className="task__modify"
-                            value={value}
-                            onChange={handleChange}
-                        />
-                    </Inputs>
-                    <Buttons>
-                        <Button
-                            type="button"
-                            onClick={() => handleModifyConfirmTask(idx, value)}
-                            className="button__modify"
-                        >
-                            {IconCheck}
-                        </Button>
-                        <Button
-                            type="button"
-                            onClick={() => handleModifyTask(idx)}
-                        >
-                            {IconPen}
-                        </Button>
-                        <Button
-                            type="button"
-                            onClick={() => handleDeleteTask(idx)}
-                        >
-                            {IconTrash}
-                        </Button>
-                    </Buttons>
-                </Task>
-            ))}
+            <TaskList>
+                <Sorting>Inbox</Sorting>
+                {tasks.map((task, idx) => {
+                    if (!task.done) {
+                        return (
+                            <Task key={idx} id={`task${idx}`}>
+                                <Inputs>
+                                    <Checkbox
+                                        type="checkbox"
+                                        checked={task.done}
+                                        onChange={() => handleCheckTask(idx)}
+                                    />
+                                    <Input
+                                        type="text"
+                                        className="task"
+                                        value={task.text}
+                                        dataChecked={task.done}
+                                        readOnly
+                                    />
+                                    <Input
+                                        type="text"
+                                        className="task__modify"
+                                        value={value}
+                                        onChange={handleChange}
+                                    />
+                                </Inputs>
+                                <Buttons>
+                                    <Button
+                                        type="button"
+                                        onClick={() =>
+                                            handleModifyConfirmTask(idx, value)
+                                        }
+                                        className="button__modify"
+                                    >
+                                        {IconCheck}
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        onClick={() => handleModifyTask(idx)}
+                                    >
+                                        {IconPen}
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        onClick={() => handleDeleteTask(idx)}
+                                    >
+                                        {IconTrash}
+                                    </Button>
+                                </Buttons>
+                            </Task>
+                        );
+                    }
+                })}
+            </TaskList>
+            <TaskList>
+                <Sorting>Completed</Sorting>
+                {tasks.map((task, idx) => {
+                    if (task.done) {
+                        return (
+                            <Task key={idx} id={`task${idx}`}>
+                                <Inputs>
+                                    <Checkbox
+                                        type="checkbox"
+                                        checked={task.done}
+                                        onChange={() => handleCheckTask(idx)}
+                                    />
+                                    <Input
+                                        type="text"
+                                        className="task"
+                                        value={task.text}
+                                        dataChecked={task.done}
+                                        readOnly
+                                    />
+                                    <Input
+                                        type="text"
+                                        className="task__modify"
+                                        value={value}
+                                        onChange={handleChange}
+                                    />
+                                </Inputs>
+                                <Buttons>
+                                    <Button
+                                        type="button"
+                                        onClick={() =>
+                                            handleModifyConfirmTask(idx, value)
+                                        }
+                                        className="button__modify"
+                                    >
+                                        {IconCheck}
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        onClick={() => handleDeleteTask(idx)}
+                                    >
+                                        {IconTrash}
+                                    </Button>
+                                </Buttons>
+                            </Task>
+                        );
+                    }
+                })}
+            </TaskList>
         </>
     );
 };

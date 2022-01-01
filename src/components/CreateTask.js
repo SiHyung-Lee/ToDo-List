@@ -4,18 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
 
 const Form = styled.form`
-    margin-bottom: 5%;
-    background-color: #f2f2f2;
-    padding: 3% 5%;
+    background-color: #bfd7ed;
+    padding: 20px 20px;
 `;
 
 const Input = styled.input`
-    border: 1px solid #e5e5e5;
+    border: 1px solid #60a3d9;
     width: calc(99% - 70px);
     height: 40px;
     padding: 0 10px;
     box-sizing: border-box;
     font-size: 14px;
+    background-color: #fff;
 `;
 
 const Button = styled.button`
@@ -23,7 +23,7 @@ const Button = styled.button`
     width: 70px;
     margin-left: 1%;
     border: none;
-    background-color: #1e87f0;
+    background-color: #60a3d9;
     color: #fff;
     text-transform: uppercase;
     vertical-align: top;
@@ -35,11 +35,11 @@ function CreateTask({ handleAddTask }) {
     const [value, setValue] = useState('');
     const inputRef = useRef(null);
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         setValue(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = event => {
         event.preventDefault();
         handleAddTask(value);
         setValue('');
@@ -50,13 +50,13 @@ function CreateTask({ handleAddTask }) {
         <>
             <Form onSubmit={handleSubmit}>
                 <Input
-                    type='text'
+                    type="text"
                     value={value}
                     onChange={handleChange}
-                    placeholder='Enter a todo'
+                    placeholder="Enter a todo"
                     ref={inputRef}
                 />
-                <Button type='submit'>{Icon}</Button>
+                <Button type="submit">{Icon}</Button>
             </Form>
         </>
     );
