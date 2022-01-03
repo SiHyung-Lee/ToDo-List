@@ -107,6 +107,7 @@ const Tasks = props => {
                                         value={task.text}
                                         dataChecked={task.done}
                                         readOnly
+                                        onClick={() => handleCheckTask(idx)}
                                     />
                                     <Input
                                         type="text"
@@ -161,6 +162,7 @@ const Tasks = props => {
                                         value={task.text}
                                         dataChecked={task.done}
                                         readOnly
+                                        onClick={() => handleCheckTask(idx)}
                                     />
                                     <Input
                                         type="text"
