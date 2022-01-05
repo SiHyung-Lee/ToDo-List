@@ -13,7 +13,7 @@ const Sorting = styled.h2`
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
-    color: #003b73;
+    color: #1a374d;
 `;
 
 const Task = styled.div`
@@ -63,8 +63,8 @@ const Button = styled.button`
     font-size: 9px;
     &.button__modify {
         display: none;
-        background-color: #60a3d9;
-        border-color: #60a3d9;
+        background-color: #406882;
+        border-color: #406882;
     }
 `;
 

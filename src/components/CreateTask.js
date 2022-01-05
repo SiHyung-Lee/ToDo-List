@@ -4,18 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
 
 const Form = styled.form`
-    background-color: #bfd7ed;
+    background-color: #6998ab;
     padding: 20px 20px;
 `;
 
 const Input = styled.input`
-    border: 1px solid #60a3d9;
+    border: 1px solid #6998ab;
     width: calc(99% - 70px);
     height: 40px;
     padding: 0 10px;
     box-sizing: border-box;
     font-size: 14px;
-    background-color: #fff;
+    background-color: #b1d0e0;
+    color: #fff;
+    &::placeholder {
+        color: #fff;
+    }
 `;
 
 const Button = styled.button`
@@ -23,7 +27,7 @@ const Button = styled.button`
     width: 70px;
     margin-left: 1%;
     border: none;
-    background-color: #60a3d9;
+    background-color: #1a374d;
     color: #fff;
     text-transform: uppercase;
     vertical-align: top;

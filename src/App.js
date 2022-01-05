@@ -8,7 +8,7 @@ const Header = styled.h1`
     font-size: 24px;
     padding: 10px 20px 0;
     margin: 0;
-    background-color: #bfd7ed;
+    background-color: #6998ab;
     text-align: center;
     color: #fff;
 `;
