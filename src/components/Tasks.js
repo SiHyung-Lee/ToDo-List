@@ -30,10 +30,8 @@ const Inputs = styled.div`
 `;
 
 const Checkbox = styled.input`
-    width: 25px;
-    height: 25px;
     border: 1px solid #ccc;
-    margin: 0;
+    margin: 0 5px 0 0;
 `;
 
 const Input = styled.input`
