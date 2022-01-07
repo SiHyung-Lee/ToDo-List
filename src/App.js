@@ -57,6 +57,8 @@ const App = () => {
         buttonModify.style.display = 'none';
         thisTaskTitle.style.display = 'inline-block';
 
+        if (!value) return false;
+
         setTasks(
             tasks.map((task, index) =>
                 index === idx ? { text: value, done: task.done } : task,
@@ -72,14 +74,17 @@ const App = () => {
         );
     };
 
-    useEffect(() => console.log(tasks));
+    useEffect(() => {
+        console.log(tasks);
+    });
 
     return (
         <div className="App">
             <Header>Your Things</Header>
             <CreateTask handleAddTask={handleAddTask} />
             <Tasks
-                tasks={tasks}
+                doneTasks={tasks.filter(task => task.done)}
+                undoneTasks={tasks.filter(task => !task.done)}
                 handleCheckTask={handleCheckTask}
                 handleDeleteTask={handleDeleteTask}
                 handleModifyTask={handleModifyTask}
