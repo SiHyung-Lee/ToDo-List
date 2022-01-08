@@ -77,9 +77,50 @@ const Tasks = props => {
         setValue(event.target.value);
     };
 
+    const handleFormatTask = (task, idx) => {
+        return (
+            <Task key={idx} id={`task${idx}`}>
+                <Inputs>
+                    <Checkbox
+                        type="checkbox"
+                        checked={task.done}
+                        onChange={() => handleCheckTask(idx)}
+                    />
+                    <Input
+                        type="text"
+                        className="task"
+                        value={task.text}
+                        dataChecked={task.done}
+                        readOnly
+                    />
+                    <Input
+                        type="text"
+                        className="task__modify"
+                        value={value}
+                        onChange={handleChange}
+                    />
+                </Inputs>
+                <Buttons>
+                    <Button
+                        type="button"
+                        onClick={() => handleModifyConfirmTask(idx, value)}
+                        className="button__modify"
+                    >
+                        {IconCheck}
+                    </Button>
+                    <Button type="button" onClick={() => handleModifyTask(idx)}>
+                        {IconPen}
+                    </Button>
+                    <Button type="button" onClick={() => handleDeleteTask(idx)}>
+                        {IconTrash}
+                    </Button>
+                </Buttons>
+            </Task>
+        );
+    };
+
     const {
-        doneTasks,
-        undoneTasks,
+        tasks,
         handleCheckTask,
         handleModifyTask,
         handleDeleteTask,
@@ -90,102 +131,15 @@ const Tasks = props => {
         <>
             <TaskList>
                 <Sorting>Inbox</Sorting>
-                {undoneTasks.map((task, idx) => {
-                    return (
-                        <Task key={idx} id={`task${idx}`}>
-                            <Inputs>
-                                <Checkbox
-                                    type="checkbox"
-                                    checked={task.done}
-                                    onChange={() => handleCheckTask(idx)}
-                                />
-                                <Input
-                                    type="text"
-                                    className="task"
-                                    value={task.text}
-                                    dataChecked={task.done}
-                                    readOnly
-                                />
-                                <Input
-                                    type="text"
-                                    className="task__modify"
-                                    value={value}
-                                    onChange={handleChange}
-                                />
-                            </Inputs>
-                            <Buttons>
-                                <Button
-                                    type="button"
-                                    onClick={() =>
-                                        handleModifyConfirmTask(idx, value)
-                                    }
-                                    className="button__modify"
-                                >
-                                    {IconCheck}
-                                </Button>
-                                <Button
-                                    type="button"
-                                    onClick={() => handleModifyTask(idx)}
-                                >
-                                    {IconPen}
-                                </Button>
-                                <Button
-                                    type="button"
-                                    onClick={() => handleDeleteTask(idx)}
-                                >
-                                    {IconTrash}
-                                </Button>
-                            </Buttons>
-                        </Task>
-                    );
-                })}
+                {tasks.map((task, idx) =>
+                    !task.done ? handleFormatTask(task, idx) : '',
+                )}
             </TaskList>
             <TaskList>
                 <Sorting>Completed</Sorting>
-                {doneTasks.map((task, idx) => {
-                    return (
-                        <Task key={idx} id={`task${idx}`}>
-                            <Inputs>
-                                <Checkbox
-                                    type="checkbox"
-                                    checked={task.done}
-                                    onChange={() => handleCheckTask(idx)}
-                                />
-                                <Input
-                                    type="text"
-                                    className="task"
-                                    value={task.text}
-                                    dataChecked={task.done}
-                                    readOnly
-                                    onClick={() => handleCheckTask(idx)}
-                                />
-                                <Input
-                                    type="text"
-                                    className="task__modify"
-                                    value={value}
-                                    onChange={handleChange}
-                                />
-                            </Inputs>
-                            <Buttons>
-                                <Button
-                                    type="button"
-                                    onClick={() =>
-                                        handleModifyConfirmTask(idx, value)
-                                    }
-                                    className="button__modify"
-                                >
-                                    {IconCheck}
-                                </Button>
-                                <Button
-                                    type="button"
-                                    onClick={() => handleDeleteTask(idx)}
-                                >
-                                    {IconTrash}
-                                </Button>
-                            </Buttons>
-                        </Task>
-                    );
-                })}
+                {tasks.map((task, idx) =>
+                    task.done ? handleFormatTask(task, idx) : '',
+                )}
             </TaskList>
         </>
     );

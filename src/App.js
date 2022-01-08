@@ -83,8 +83,7 @@ const App = () => {
             <Header>Your Things</Header>
             <CreateTask handleAddTask={handleAddTask} />
             <Tasks
-                doneTasks={tasks.filter(task => task.done)}
-                undoneTasks={tasks.filter(task => !task.done)}
+                tasks={tasks}
                 handleCheckTask={handleCheckTask}
                 handleDeleteTask={handleDeleteTask}
                 handleModifyTask={handleModifyTask}
