@@ -73,6 +73,14 @@ const IconCheck = <FontAwesomeIcon icon={faCheck} style={{ color: '#fff' }} />;
 const Tasks = props => {
     const [value, setValue] = useState('');
 
+    const {
+        tasks,
+        handleCheckTask,
+        handleModifyTask,
+        handleDeleteTask,
+        handleModifyConfirmTask,
+    } = props;
+
     const handleChange = event => {
         setValue(event.target.value);
     };
@@ -118,14 +126,6 @@ const Tasks = props => {
             </Task>
         );
     };
-
-    const {
-        tasks,
-        handleCheckTask,
-        handleModifyTask,
-        handleDeleteTask,
-        handleModifyConfirmTask,
-    } = props;
 
     return (
         <>
