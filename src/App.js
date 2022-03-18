@@ -80,7 +80,7 @@ const App = () => {
 
     return (
         <div className="App">
-            <Header>Your Things</Header>
+            <Header>Your ToDos</Header>
             <CreateTask handleAddTask={handleAddTask} />
             <Tasks
                 tasks={tasks}
